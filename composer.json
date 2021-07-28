@@ -1,0 +1,22 @@
+{
+    "name": "gekatexgroup/gekatexgroup-socialite-provider",
+    "description": "A Socialite provider to easily add the Gekatex Group account to any Laravel app.",
+    "type": "library",
+    "require": {
+      "socialiteproviders/manager": "~4.0",
+      "php": "^7.2 || ^8.0",
+      "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gekatexgroup\\GekatexgroupSocialiteProvider\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Paul Hennell",
+            "email": "paul.hennell@flexipads.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
