@@ -104,7 +104,7 @@ class Provider extends AbstractProvider
             'nickname' => $this->getUserData($data, 'nickname'),
             'name'     => $this->getUserData($data, 'name'),
             'email'    => $this->getUserData($data, 'email'),
-            'avatar'   => $this->getUserData($data, 'avatar'),
+            'avatar'   => $this->getUserData($data, 'profile_photo_url'),
         ]);
     }
 
