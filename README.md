@@ -57,8 +57,8 @@ protected $listen = [
 ### Add database fields
 ```
 Schema::table('users', function (Blueprint $table) {
-            $table->integer('gekatexgroup_id')->index();
-            //$table->string('profile_photo_path')->index(); //add if required and field doesn't exist!
+            $table->integer('gekatexgroup_id')->nullable()->index();
+            //$table->string('profile_photo_path')->nullable()->index(); //add if required and field doesn't exist!
         });
 ```
 
