@@ -54,7 +54,15 @@ protected $listen = [
 ];
 ```
 
-### Usage
+### Add database fields
+```
+Schema::table('users', function (Blueprint $table) {
+            $table->integer('gekatexgroup_id')->index();
+            //$table->string('profile_photo_path')->index(); //add if required and field doesn't exist!
+        });
+```
+
+## Usage
 
 You should now be able to use the provider like you would regularly use Socialite (assuming you have the facade installed):
 
@@ -69,3 +77,26 @@ return Socialite::driver('gekatexgroupsso')->redirect();
 - ``name``
 - ``email``
 - ``avatar``
+
+
+### Creating the User record
+
+Unless you add the gekatexgroup_id field to the fillable array you will need to use force create to make a local user record.
+
+```php
+return User::forceCreate([
+            'name' => $groupUser->getName(),
+            'email' => $groupUser->email,
+            'password' => Str::random(40),
+            'profile_photo_path' => $groupUser->getAvatar(),
+            'gekatexgroup_id' => $groupUser->getId(),
+            'email_verified_at' => $groupUser->user['email_verified_at'],
+        ]);
+```
+
+Update user values on login in a similar way.
+
+### Security
+
+* Check your permisions on the Gekatex Group Developers pages to dictate permissions for registered apps.
+* You can probabbly add `gekatexgroup_id` or email to the users `$hidden` array.
