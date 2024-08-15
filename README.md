@@ -43,6 +43,21 @@ GEKATEXGROUPSSO_REDIRECT_URI=
 
 Configure the package's listener to listen for `SocialiteWasCalled` events.
 
+#### Laravel 11
+
+Add the listener to the AppServiceProvider:
+
+```php
+public function boot(): void
+    {
+        Event::listen(function(\SocialiteProviders\Manager\SocialiteWasCalled $event){
+            $event->extendSocialite('gekatexgroupsso', Provider::class);
+        });
+    }
+```
+
+#### Laravel 10
+
 Add the event to your `listen[]` array in `app/Providers/EventServiceProvider`. See the [Base Installation Guide](https://socialiteproviders.com/usage/) for detailed instructions.
 
 ```php
@@ -61,6 +76,7 @@ Schema::table('users', function (Blueprint $table) {
             //$table->string('profile_photo_path')->nullable()->index(); //add if required and field doesn't exist!
         });
 ```
+You might also need to remove the password field if this is the only way to login
 
 ## Usage
 
